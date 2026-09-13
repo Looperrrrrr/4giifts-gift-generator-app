@@ -1,81 +1,295 @@
-# WebApp boilerplate with React JS and Flask API
-
-Build web applications using React.js for the front end and python/flask for your backend API.
-
-- Documentation can be found here: https://4geeks.com/docs/start/react-flask-template
-- Here is a video on [how to use this template](https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b)
-- Integrated with Pipenv for package managing.
-- Fast deployment to Render [in just a few steps here](https://4geeks.com/docs/start/deploy-to-render-com).
-- Use of .env file.
-- SQLAlchemy integration for database abstraction.
-
-### 1) Installation:
-
-> If you use Github Codespaces (recommended) or Gitpod this template will already come with Python, Node and the Posgres Database installed. If you are working locally make sure to install Python 3.10, Node 
-
-It is recomended to install the backend first, make sure you have Python 3.10, Pipenv and a database engine (Posgress recomended)
-
-1. Install the python packages: `$ pipenv install`
-2. Create a .env file based on the .env.example: `$ cp .env.example .env`
-3. Install your database engine and create your database, depending on your database you have to create a DATABASE_URL variable with one of the possible values, make sure you replace the valudes with your database information:
-
-| Engine    | DATABASE_URL                                        |
-| --------- | --------------------------------------------------- |
-| SQLite    | sqlite:////test.db                                  |
-| MySQL     | mysql://username:password@localhost:port/example    |
-| Postgress | postgres://username:password@localhost:5432/example |
-
-4. Migrate the migrations: `$ pipenv run migrate` (skip if you have not made changes to the models on the `./src/api/models.py`)
-5. Run the migrations: `$ pipenv run upgrade`
-6. Run the application: `$ pipenv run start`
-
-> Note: Codespaces users can connect to psql by typing: `psql -h localhost -U gitpod example`
-
-### Undo a migration
-
-You are also able to undo a migration by running
-
-```sh
-$ pipenv run downgrade
+# 🎁 4Gifts - Gift Generator & Calendar Manager
+ 
+**Generador inteligente de ideas de regalos + Gestor de fechas especiales**
+ 
+> Proyecto final del Bootcamp Full Stack Developer de **4Geeks Academy** (Enero 2026)
+ 
+---
+ 
+## 📌 ¿Qué es 4Gifts?
+ 
+Aplicación web que ayuda a gestionar fechas importantes (cumpleaños, aniversarios, eventos) y genera ideas personalizadas de regalos basadas en preferencias del usuario. Nunca más olvides un cumpleaños ni pierdas tiempo buscando el regalo perfecto.
+ 
+### Problema resuelto
+❌ Olvidar cumpleaños y aniversarios  
+❌ Gastar horas buscando el regalo adecuado  
+❌ No saber qué regalar a personas específicas  
+ 
+✅ Calendario inteligente con recordatorios  
+✅ Generador de ideas en segundos  
+✅ Guardar y reutilizar sugerencias  
+ 
+---
+ 
+## ✨ Características principales
+ 
+- 📅 **Calendario de eventos** — Crea eventos con fecha, persona y tipo (cumpleaños, aniversario, etc.)
+- 🎁 **Generador de ideas de regalos** — Obtén sugerencias automáticas basadas en categorías y presupuesto
+- 👤 **Autenticación de usuarios** — Registro y login con JWT (seguro)
+- 💾 **Persistencia de datos** — Todos tus eventos y preferencias guardadas en base de datos
+- 📱 **Interfaz responsive** — Funciona en desktop, tablet y móvil
+- 🎨 **Diseño intuitivo** — UI limpia y fácil de usar
+---
+ 
+## 🛠️ Stack Tecnológico
+ 
+| Capa | Tecnología |
+|------|-----------|
+| **Frontend** | React 18, Vite, CSS Modules, Context API |
+| **Backend** | Python 3.10, Flask, SQLAlchemy ORM |
+| **Base de datos** | PostgreSQL (Render.com) |
+| **Autenticación** | JWT (JSON Web Tokens) |
+| **Herramientas** | Git, GitHub, Render.com (Deploy) |
+ 
+---
+ 
+## 👨‍💻 Mi rol en este proyecto
+ 
+Trabajé en un **equipo de 3-4 desarrolladores** en la rama frontend. Mi contribución principal:
+ 
+### 🎯 Frontend Lead
+- ✅ Diseño y arquitectura de componentes React
+- ✅ Implementación de vistas principales:
+  - Dashboard de usuario
+  - Formulario de creación de eventos
+  - Componentes del generador de regalos
+  - Página de login/registro
+- ✅ Gestión de estado con Context API
+- ✅ Consumo de la API Flask (fetch)
+- ✅ Estilos con CSS Modules — diseño responsivo
+- ✅ Flujo de usuario end-to-end
+### 📚 Lo que aprendí
+- Cómo estructurar una aplicación React de nivel profesional
+- Comunicación frontend-backend via REST API
+- Manejo de autenticación JWT en el cliente
+- Prácticas de Git y trabajo en equipo (merges, pull requests)
+- Deploy de aplicaciones full stack
+---
+ 
+## 🚀 Demostración en vivo
+ 
+**URL de deploy:** [🔗 4Gifts en Render.com](link-aqui-cuando-despliegues)
+ 
+> ⚠️ **Nota:** En desarrollo. Deploy en proceso.
+ 
+### Credenciales de prueba
 ```
-
-### Backend Populate Table Users
-
-To insert test users in the database execute the following command:
-
-```sh
-$ flask insert-test-users 5
+Email: test@example.com
+Password: test123
 ```
-
-And you will see the following message:
-
+ 
+---
+ 
+## 📦 Instalación y Setup Local
+ 
+### Requisitos previos
+- Python 3.10+
+- Node.js 20+
+- PostgreSQL 14+ (o SQLite para desarrollo)
+- Git
+### 1️⃣ Backend (Python + Flask)
+ 
+```bash
+# Clonar el repositorio
+git clone https://github.com/Looperrrrrr/Final_Project-4Giifts.git
+cd Final_Project-4Giifts
+ 
+# Crear y activar ambiente virtual
+pipenv install
+ 
+# Configurar variables de entorno
+cp .env.example .env
+ 
+# Editar .env con tu DATABASE_URL
+# Ejemplo PostgreSQL:
+# DATABASE_URL=postgres://usuario:password@localhost:5432/4gifts_db
+# Ejemplo SQLite (rápido para testing):
+# DATABASE_URL=sqlite:////tmp/test.db
+ 
+# Ejecutar migraciones
+pipenv run migrate
+pipenv run upgrade
+ 
+# Poblar base de datos con test data (opcional)
+pipenv run insert-test-data
+ 
+# Iniciar servidor Flask
+pipenv run start
+# El backend estará en: http://localhost:5000
 ```
-  Creating test users
-  test_user1@test.com created.
-  test_user2@test.com created.
-  test_user3@test.com created.
-  test_user4@test.com created.
-  test_user5@test.com created.
-  Users created successfully!
+ 
+### 2️⃣ Frontend (React + Vite)
+ 
+En otra terminal:
+ 
+```bash
+# Asegúrate de que ya instalaste dependencias
+npm install
+ 
+# Iniciar servidor de desarrollo
+npm run start
+# La app estará en: http://localhost:3000
 ```
-
-### **Important note for the database and the data inside it**
-
-Every Github codespace environment will have **its own database**, so if you're working with more people eveyone will have a different database and different records inside it. This data **will be lost**, so don't spend too much time manually creating records for testing, instead, you can automate adding records to your database by editing ```commands.py``` file inside ```/src/api``` folder. Edit line 32 function ```insert_test_data``` to insert the data according to your model (use the function ```insert_test_users``` above as an example). Then, all you need to do is run ```pipenv run insert-test-data```.
-
-### Front-End Manual Installation:
-
--   Make sure you are using node version 20 and that you have already successfully installed and runned the backend.
-
-1. Install the packages: `$ npm install`
-2. Start coding! start the webpack dev server `$ npm run start`
-
-## Publish your website!
-
-This boilerplate it's 100% read to deploy with Render.com and Heroku in a matter of minutes. Please read the [official documentation about it](https://4geeks.com/docs/start/deploy-to-render-com).
-
-### Contributors
-
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
-
-You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
+ 
+Listo. El frontend se conectará automáticamente al backend.
+ 
+---
+ 
+## 📸 Screenshots
+ 
+### Dashboard Principal
+*[Captura: vista general con calendario y próximos eventos]*
+ 
+### Crear Evento
+*[Captura: formulario para añadir cumpleaños/aniversarios]*
+ 
+### Generador de Regalos
+*[Captura: interfaz mostrando ideas de regalos sugeridas]*
+ 
+### Login
+*[Captura: página de autenticación]*
+ 
+> 💡 **Próximamente:** Añadiré GIFs animados mostrando el flujo completo.
+ 
+---
+ 
+## 🏗️ Estructura del Proyecto
+ 
+```
+Final_Project-4Giifts/
+├── src/
+│   ├── api/                    # Backend Flask
+│   │   ├── models.py           # Modelos de base de datos
+│   │   ├── routes.py           # Rutas/endpoints
+│   │   └── commands.py         # Comandos CLI
+│   │
+│   └── components/             # Componentes React (Frontend)
+│       ├── EventList.jsx        # Listado de eventos
+│       ├── EventForm.jsx        # Formulario crear evento
+│       ├── GiftGenerator.jsx    # Generador de ideas
+│       ├── Dashboard.jsx        # Vista principal
+│       └── Auth/                # Autenticación
+│
+├── public/                      # Assets estáticos
+├── package.json                 # Dependencias Frontend
+├── Pipfile                      # Dependencias Backend
+├── .env.example                 # Variables de entorno ejemplo
+└── README.md                    # Este archivo
+```
+ 
+---
+ 
+## 🔌 API Endpoints principales
+ 
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| POST | `/auth/register` | Registrar usuario |
+| POST | `/auth/login` | Login y obtener JWT |
+| GET | `/events` | Listar eventos del usuario |
+| POST | `/events` | Crear nuevo evento |
+| DELETE | `/events/<id>` | Eliminar evento |
+| GET | `/gifts/suggestions` | Obtener ideas de regalos |
+ 
+---
+ 
+## 🐛 Troubleshooting
+ 
+### Error: "Cannot connect to backend"
+- Verifica que Flask está corriendo en `http://localhost:5000`
+- Revisa la consola del navegador (F12 → Network) para ver la request fallida
+- Si CORS error: añade origen en Flask
+### Error: "Database connection failed"
+- Comprueba que PostgreSQL está corriendo
+- Verifica la `DATABASE_URL` en `.env`
+- Ejecuta: `psql -U tu_usuario -d 4gifts_db` para verificar conexión
+### Error: "npm install falla"
+- Elimina `node_modules` y `package-lock.json`
+- Ejecuta: `npm install` de nuevo
+---
+ 
+## 🚀 Deploy en Render.com
+ 
+Este proyecto está configurado para deployar fácilmente en Render.com:
+ 
+1. Haz push a tu rama `main`
+2. Conecta tu repo en [Render.com](https://render.com)
+3. Render detecta automáticamente que es React + Flask
+4. Configura variables de entorno
+5. Deploy automático en ~10 minutos
+📖 [Ver guía completa de deploy](https://4geeks.com/docs/start/deploy-to-render-com)
+ 
+---
+ 
+## 📚 Tecnologías aprendidas
+ 
+Este proyecto cubrió el stack full stack completo:
+ 
+### Frontend
+- React Hooks (useState, useContext, useEffect)
+- Componentes funcionales
+- CSS Modules para estilos encapsulados
+- Fetch API para consumir endpoints
+- Rutas con React Router (si aplica)
+### Backend
+- Flask blueprints y rutas
+- SQLAlchemy para ORM
+- Autenticación JWT
+- Manejo de CORS
+- Migraciones de base de datos
+### DevOps
+- Git workflow (branches, merges)
+- Deploy en producción
+- Variables de entorno
+- Debugging en navegador y servidor
+---
+ 
+## 🤝 Trabajo en equipo
+ 
+Este fue un **proyecto colaborativo**. Trabajé con:
+- **Alejandro Gonzalez**
+- **Harold Maldonado**
+- **Hugo Alexander**
+**Lecciones de teamwork:**
+- Comunicación clara en stand-ups diarios
+- Resolución de conflictos en Git (merge conflicts)
+- Code reviews y feedback constructivo
+- Distribución de tareas según fortalezas
+---
+ 
+## 📝 Licencia
+ 
+Este proyecto es parte de los materiales de **4Geeks Academy**. 
+ 
+---
+ 
+## 📧 Contacto
+ 
+¿Preguntas sobre el proyecto?
+ 
+- **Email:** asif.covilha@gmail.com
+- **LinkedIn:** [in/asif-alam-973b7a146](https://www.linkedin.com/in/asif-alam-973b7a146/)
+- **GitHub:** [@Looperrrrrr](https://github.com/Looperrrrrr)
+---
+ 
+## 🎯 Próximos pasos (Plan B)
+ 
+Estoy planeando una **versión mejorada** de este proyecto con:
+- ✅ Más features de generador (filtros avanzados, presupuesto)
+- ✅ Recomendaciones basadas en IA
+- ✅ Integración con tiendas online (Amazon, ASOS)
+- ✅ Compartir listas de regalos con amigos
+- ✅ Notificaciones por email
+**Status:** En planning
+ 
+---
+ 
+## ⭐ Si te gustó este proyecto
+ 
+Dale una ⭐ en GitHub y comparte con otros desarrolladores en busca de bootcamp.
+ 
+---
+ 
+**Hecho con ❤️ por Asif Alam | Full Stack Developer | Madrid, Spain**
+ 
+*Actualizado: Septiembre 2026*
+ 
