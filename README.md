@@ -249,7 +249,7 @@ Este fue un **proyecto colaborativo**. Trabajé con:
 - **Alejandro Gonzalez**
 - **Harold Maldonado**
 - **Hugo Alexander**
-- 
+  
 **Lecciones de teamwork:**
 - Comunicación clara en stand-ups diarios
 - Resolución de conflictos en Git (merge conflicts)
