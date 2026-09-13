@@ -249,6 +249,7 @@ Este fue un **proyecto colaborativo**. Trabajé con:
 - **Alejandro Gonzalez**
 - **Harold Maldonado**
 - **Hugo Alexander**
+- 
 **Lecciones de teamwork:**
 - Comunicación clara en stand-ups diarios
 - Resolución de conflictos en Git (merge conflicts)
@@ -271,7 +272,7 @@ Este proyecto es parte de los materiales de **4Geeks Academy**.
 - **GitHub:** [@Looperrrrrr](https://github.com/Looperrrrrr)
 ---
  
-## 🎯 Próximos pasos (Plan B)
+## 🎯 Próximos pasos
  
 Estoy planeando una **versión mejorada** de este proyecto con:
 - ✅ Más features de generador (filtros avanzados, presupuesto)
