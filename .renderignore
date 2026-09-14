@@ -1,0 +1,10 @@
+.git
+.gitignore
+node_modules
+dist
+docs
+.github
+.vscode
+.devcontainer
+.env.example
+4geeks.ico
